@@ -1,0 +1,172 @@
+/*
+Theme Name: Baxel Child
+Template: baxel
+Version: 1.0
+Theme URI: http://www.burnhambox.com/baxel
+Description: Baxel Child Theme
+Author: Burnhambox
+Text Domain: baxel-child
+Author URI: http://www.burnhambox.com
+License: GNU General Public License version 3.0
+License URI: http://www.gnu.org/licenses/gpl-3.0.html
+*/
+
+/* ***************** */
+/* DO NOT EDIT ABOVE */
+/* ***************** */
+
+/* body{
+	background: red !important;
+} */
+
+/* Header */
+.top-extra-outer{
+	display: none !important;
+}
+.nm-auth{
+	font-size: 16px;
+    list-style: none;
+    float: right;
+	margin-top: 25px;
+}
+
+.nm-auth li{
+	display: inline-block;
+}
+.nm-auth li a{
+	background-color: #4fc6a6 !important;
+    color: #FFF!important;
+	padding: 10px;
+}
+
+.nm-auth li a:hover{
+	background-color: #7bddc3 !important;
+}
+.baxel-slider-container {
+    margin-bottom: 60px !important;
+    background: #fff !important;
+}
+
+.site-top {
+    margin-bottom: 0px !important;
+}
+
+.nm-header{
+	max-width: 1180px;
+    display: flex;
+    background: #fff;
+    margin: 0px auto;
+}
+.nm-header-left{
+	max-width: 50%;
+    padding: 50px 30px 50px 20px;
+    order: 1;
+}
+.nm-header-left h1{
+	font-size: 40px;
+}
+.nm-header-left ul{
+	list-style: none;
+    padding: 0px;
+    font-size: 16px;
+    margin-bottom: 30px;
+}
+.nm-header-left a{
+	padding: 10px 35px;
+    background: #4fc6a6;
+    color: #fff !important;
+    font-size: 20px;
+    font-weight: bold;
+    border-radius: 20px;
+}
+.nm-header-left a:hover{
+	background: #52f1c7;
+}
+.nm-header-left p{
+	margin-top: 25px;
+	color: #999;
+}
+.nm-header-right{
+	max-width: 50%;
+    padding: 50px 20px 50px 50px;
+    order: 2;
+}
+
+.nm-header-right img{
+	width: 85%;
+}
+
+.nm-header-right iframe{
+	width: 450px;
+    height: 258px;
+	margin-top: 70px;
+}
+
+.article-pure-content .woocommerce{
+	text-align: center !important;
+}
+.nm-custom-login{
+	display: inline-block;
+    min-width: 40%;
+    margin-left: 20px;
+}
+.nm-custom-login .form-row{
+	width: 100% !important;
+	float: unset !important;
+}
+
+.nm-custom-login .button{
+	background-color: #4fc6a6 !important;
+    color: #FFF!important;
+	padding: 10px;
+}
+
+.nm-custom-login .button:hover{
+	background-color: #7bddc3 !important;
+}
+
+@media only screen and (max-width: 780px){
+	.nm-auth{
+		padding: 0px;
+	}
+	.mobile-logo-container{
+		position: relative;
+		left: 70%;
+	}
+	.nm-header{
+		display: grid;
+	}
+	.nm-header-left, .nm-header-right{
+		text-align: center;
+		max-width: 100%;
+		display: block;
+		padding: 20px;
+	}
+	.nm-header-left{
+		order: 2;
+	}
+	.nm-header-right{
+		order: 1;
+	}
+	.nm-header-right img{
+		width: 100%;
+		margin-top: 70px;
+	}
+	.nm-header-right iframe{
+		width: 100%;
+		height: 450px;
+	}
+}
+
+@media only screen and (max-width: 425px){
+	.mobile-logo-container{
+		left: 10%;
+	}
+	.nm-custom-login{
+		margin-left: 0px;
+	}
+	.nm-header-right iframe{
+		height: auto;
+		margin-top: 50px;
+	}
+}
