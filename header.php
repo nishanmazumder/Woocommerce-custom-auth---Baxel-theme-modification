@@ -30,17 +30,6 @@ $baxel_opt_MenuWidth = substr($baxel_header_style, 14, 6);
 	<!-- Mobile Header -->
 	<div class="mobile-header clearfix">
 		<div class="mobile-logo-outer">
-		<ul class="nm-auth">
-			<?php
-			if (is_user_logged_in()) { ?>
-				<li><a href="<?php echo wp_logout_url(home_url()); ?>">Logout</a></li>
-			<?php } else { ?>
-				<!-- <li><a href="<php echo get_permalink(get_option('woocommerce_myaccount_page_id')); ?>">Login</a></li> -->
-				<li><a href="<?php echo get_theme_mod('nm_login_url'); ?>">Login</a></li>
-				<li><a href="<?php echo get_theme_mod('nm_register_url'); ?>">Register</a></li>
-			<?php }
-			?>
-		</ul>
 			<div class="mobile-logo-container">
 				<?php $stickyLogoPath = '';
 				if (get_theme_mod('baxel_logo_image')) {
@@ -59,6 +48,17 @@ $baxel_opt_MenuWidth = substr($baxel_header_style, 14, 6);
 		</div>
 		<div class="mobile-menu-button"><i class="fa fa-navicon"></i></div>
 		<div id="touch-menu"></div>
+		<ul class="nm-auth">
+			<?php
+			if (is_user_logged_in()) { ?>
+				<li><a href="<?php echo wp_logout_url(home_url()); ?>">Logout</a></li>
+			<?php } else { ?>
+				<!-- <li><a href="<php echo get_permalink(get_option('woocommerce_myaccount_page_id')); ?>">Login</a></li> -->
+				<li><a href="<?php echo get_theme_mod('nm_login_url'); ?>">Login</a></li>
+				<li><a href="<?php echo get_theme_mod('nm_register_url'); ?>">Register</a></li>
+			<?php }
+			?>
+		</ul>
 	</div>
 	<!-- /Mobile Header -->
 

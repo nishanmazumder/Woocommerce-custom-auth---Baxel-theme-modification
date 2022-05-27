@@ -34,27 +34,27 @@ License URI: http://www.gnu.org/licenses/gpl-3.0.html
 	display: inline-block;
 }
 .nm-auth li a{
-	background-color: #4fc6a6 !important;
-    color: #FFF!important;
+	/* background-color: #4fc6a6 !important;
+    color: #FFF!important; */
 	padding: 10px;
 }
 
-.nm-auth li a:hover{
+/* .nm-auth li a:hover{
 	background-color: #7bddc3 !important;
-}
+} */
 .baxel-slider-container {
     margin-bottom: 60px !important;
-    background: #fff !important;
+    /* background: #fff !important; */
 }
 
-.site-top {
+/* .site-top {
     margin-bottom: 0px !important;
-}
+} */
 
 .nm-header{
 	max-width: 1180px;
     display: flex;
-    background: #fff;
+    /* background: #fff; */
     margin: 0px auto;
 }
 .nm-header-left{
@@ -73,18 +73,18 @@ License URI: http://www.gnu.org/licenses/gpl-3.0.html
 }
 .nm-header-left a{
 	padding: 10px 35px;
-    background: #4fc6a6;
-    color: #fff !important;
+    /* background: #4fc6a6; */
+    /* color: #fff !important; */
     font-size: 20px;
     font-weight: bold;
     border-radius: 20px;
 }
-.nm-header-left a:hover{
+/* .nm-header-left a:hover{
 	background: #52f1c7;
-}
+} */
 .nm-header-left p{
 	margin-top: 25px;
-	color: #999;
+	/* color: #999; */
 }
 .nm-header-right{
 	max-width: 50%;
@@ -102,7 +102,7 @@ License URI: http://www.gnu.org/licenses/gpl-3.0.html
 	margin-top: 70px;
 }
 
-.article-pure-content .woocommerce{
+.nm-woo-login-section .woocommerce{
 	text-align: center !important;
 }
 .nm-custom-login{
@@ -126,13 +126,40 @@ License URI: http://www.gnu.org/licenses/gpl-3.0.html
 }
 
 @media only screen and (max-width: 780px){
+	body{
+		margin-top: 50px !important;
+	}
+	.mobile-header {
+		display: inline-flex !important;
+	}
+	.mobile-logo-outer {
+		display: inline-table !important;
+		height: 50px !important;
+		margin-left: 20px !important;
+		width: 40% !important;
+	}
+	.mobile-menu-button{
+		text-align: right;
+		width: 10%;
+		margin: 0px auto;
+	}
+	#touch-menu{
+		position: absolute;
+		width: 100%;
+		background: #fff;
+		left: 0;
+		right: 0;
+		top: 50px;
+		text-align: center;
+	}
 	.nm-auth{
+		width: 50%;
 		padding: 0px;
+		text-align: right;
+		margin-right: 20px;
+		margin-top: 15px;
 	}
-	.mobile-logo-container{
-		position: relative;
-		left: 70%;
-	}
+
 	.nm-header{
 		display: grid;
 	}
@@ -150,7 +177,6 @@ License URI: http://www.gnu.org/licenses/gpl-3.0.html
 	}
 	.nm-header-right img{
 		width: 100%;
-		margin-top: 70px;
 	}
 	.nm-header-right iframe{
 		width: 100%;
@@ -162,8 +188,18 @@ License URI: http://www.gnu.org/licenses/gpl-3.0.html
 	.mobile-logo-container{
 		left: 10%;
 	}
+	.nm-auth{
+		font-size: 14px;
+		margin-right: 10px;
+	}
+	.nm-auth li a{
+		padding: 7px;
+	}
 	.nm-custom-login{
 		margin-left: 0px;
+	}
+	.nm-header-left h1{
+		margin: 0;
 	}
 	.nm-header-right iframe{
 		height: auto;

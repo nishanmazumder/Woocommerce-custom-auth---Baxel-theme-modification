@@ -33,7 +33,7 @@
 								<div class="article-content-inner">
 										<h1 class="article-title"><?php the_title(); ?></h1>
 										<?php echo do_shortcode('[woocommerce_notices]'); ?>
-										<div class="article-pure-content clearfix">
+										<div class="article-pure-content nm-woo-login-section clearfix">
 											<!-- <php the_content(); ?> -->
 											<div class="woocommerce">
 											<?php 

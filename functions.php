@@ -262,19 +262,6 @@ function nm_theme_custom_panel($wp_customize)
       'mime_type' => 'image',
    )));
 
-   // Add control
-   // $wp_customize->add_control(
-   //    new WP_Customize_Control(
-   //       $wp_customize,
-   //       'nm_hero_img',
-   //       array(
-   //          'label'    => __('Image', 'baxel-child'),
-   //          'section'  => 'nm_hero_section',
-   //          'settings' => 'nm_hero_img',
-   //          'type'     => 'media'
-   //       )
-   //    )
-   // );
 
    // Add section - WOO Auth.
    $wp_customize->add_section('nm_woo_section', array(
@@ -283,7 +270,7 @@ function nm_theme_custom_panel($wp_customize)
       'priority' => 11
    ));
 
-   // Add setting
+   // Add setting - Login Url
    $wp_customize->add_setting('nm_login_url', array(
       'default'           => __('#', 'baxel-child'),
       //   'sanitize_callback' => 'sanitize_text'
@@ -303,7 +290,7 @@ function nm_theme_custom_panel($wp_customize)
       )
    );
 
-   // Add setting
+   // Add setting - Register Url
    $wp_customize->add_setting('nm_register_url', array(
       'default'           => __('#', 'baxel-child'),
       //   'sanitize_callback' => 'sanitize_text'
@@ -319,6 +306,207 @@ function nm_theme_custom_panel($wp_customize)
             'section'  => 'nm_woo_section',
             'settings' => 'nm_register_url',
             'type'     => 'url'
+         )
+      )
+   );
+
+      
+   // Add section - Color.
+
+   // Hero
+   $wp_customize->add_section('nm_mod_color', array(
+      'title'    => __('Color', 'baxel-child'),
+      'panel'    => 'nm_text_blocks',
+      'priority' => 12
+   ));
+
+
+   $wp_customize->add_setting('nm_hero_bg', array(
+      'default' => '#fff',
+   ));
+
+   // Add Controls
+   $wp_customize->add_control(
+      new WP_Customize_Color_Control(
+         $wp_customize,
+         'nm_hero_bg',
+         array(
+            'label' => 'Hero Background Color',
+            'section' => 'nm_mod_color',
+            'settings' => 'nm_hero_bg'
+
+         )
+      )
+   );
+
+   $wp_customize->add_setting('nm_hero_header', array(
+      'default' => '#000',
+   ));
+
+
+   // Add Controls
+   $wp_customize->add_control(
+      new WP_Customize_Color_Control(
+         $wp_customize,
+         'nm_hero_header',
+         array(
+            'label' => 'Hero Header Color',
+            'section' => 'nm_mod_color',
+            'settings' => 'nm_hero_header'
+
+         )
+      )
+   );
+
+   $wp_customize->add_setting('nm_hero_list_color', array(
+      'default' => '#000',
+   ));
+
+
+   // Add Controls
+   $wp_customize->add_control(
+      new WP_Customize_Color_Control(
+         $wp_customize,
+         'nm_hero_list_color',
+         array(
+            'label' => 'Hero list Color',
+            'section' => 'nm_mod_color',
+            'settings' => 'nm_hero_list_color'
+
+         )
+      )
+   );
+
+   $wp_customize->add_setting('nm_hero_final_txt_color', array(
+      'default' => '#999',
+   ));
+
+
+   // Add Controls
+   $wp_customize->add_control(
+      new WP_Customize_Color_Control(
+         $wp_customize,
+         'nm_hero_final_txt_color',
+         array(
+            'label' => 'Hero Final text color',
+            'section' => 'nm_mod_color',
+            'settings' => 'nm_hero_final_txt_color'
+
+         )
+      )
+   );
+
+   $wp_customize->add_setting('nm_hero_btn_bg', array(
+      'default' => '#4fc6a6',
+   ));
+
+
+   // Add Controls
+   $wp_customize->add_control(
+      new WP_Customize_Color_Control(
+         $wp_customize,
+         'nm_hero_btn_bg',
+         array(
+            'label' => 'Hero Button Background Color',
+            'section' => 'nm_mod_color',
+            'settings' => 'nm_hero_btn_bg'
+
+         )
+      )
+   );
+
+   $wp_customize->add_setting('nm_hero_btn_color', array(
+      'default' => '#fff',
+   ));
+
+
+   // Add Controls
+   $wp_customize->add_control(
+      new WP_Customize_Color_Control(
+         $wp_customize,
+         'nm_hero_btn_color',
+         array(
+            'label' => 'Hero Button Text Color',
+            'section' => 'nm_mod_color',
+            'settings' => 'nm_hero_btn_color'
+
+         )
+      )
+   );
+
+   $wp_customize->add_setting('nm_hero_btn_hover', array(
+      'default' => '#7bddc3',
+   ));
+
+
+   // Add Controls
+   $wp_customize->add_control(
+      new WP_Customize_Color_Control(
+         $wp_customize,
+         'nm_hero_btn_hover',
+         array(
+            'label' => 'Hero Button Hover Color',
+            'section' => 'nm_mod_color',
+            'settings' => 'nm_hero_btn_hover'
+
+         )
+      )
+   );
+
+   //WOO
+   $wp_customize->add_setting('nm_auth_btn_bg', array(
+      'default' => '#4fc6a6',
+   ));
+
+
+   // Add Controls
+   $wp_customize->add_control(
+      new WP_Customize_Color_Control(
+         $wp_customize,
+         'nm_auth_btn_bg',
+         array(
+            'label' => 'Auth Button Background Color',
+            'section' => 'nm_mod_color',
+            'settings' => 'nm_auth_btn_bg'
+
+         )
+      )
+   );
+
+   $wp_customize->add_setting('nm_auth_btn_color', array(
+      'default' => '#fff',
+   ));
+
+
+   // Add Controls
+   $wp_customize->add_control(
+      new WP_Customize_Color_Control(
+         $wp_customize,
+         'nm_auth_btn_color',
+         array(
+            'label' => 'Auth Button Text Color',
+            'section' => 'nm_mod_color',
+            'settings' => 'nm_auth_btn_color'
+
+         )
+      )
+   );
+
+   $wp_customize->add_setting('nm_auth_btn_hover', array(
+      'default' => '#7bddc3',
+   ));
+
+
+   // Add Controls
+   $wp_customize->add_control(
+      new WP_Customize_Color_Control(
+         $wp_customize,
+         'nm_auth_btn_hover',
+         array(
+            'label' => 'Auth Button Hover Color',
+            'section' => 'nm_mod_color',
+            'settings' => 'nm_auth_btn_hover'
+
          )
       )
    );
@@ -360,3 +548,51 @@ function nm_header_hero_section()
 }
 
 // {4~X9$?UYWk^ bdsoftcr_nm_baxel
+
+// Style Customizer
+add_action('wp_head', 'nm_customizer_style');
+function nm_customizer_style()
+{ ?>
+   <style>
+      <?php if (is_home()) {?>
+         .site-top {
+            margin-bottom: 0px !important;
+         }
+      <?php } ?>
+      
+      .nm-auth li a {
+         background-color: <?php echo get_theme_mod('nm_auth_btn_bg'); ?> !important;
+         color: <?php echo get_theme_mod('nm_auth_btn_color'); ?> !important;
+      }
+
+      .nm-auth li a:hover {
+         background-color: <?php echo get_theme_mod('nm_auth_btn_hover'); ?> !important;
+      }
+
+      .baxel-slider-container, .nm-header {
+         background: <?php echo get_theme_mod('nm_hero_bg'); ?> !important;
+      }
+
+      .nm-header-left h1 {
+         /* color: #000; */
+         color: <?php echo get_theme_mod('nm_hero_header'); ?>;
+      }
+
+      .nm-header-left ul {
+         color: <?php echo get_theme_mod('nm_hero_list_color'); ?>;
+      }
+
+      .nm-header-left p {
+         color: <?php echo get_theme_mod('nm_hero_final_txt_color'); ?>;
+      }
+
+      .nm-header-left a {
+         background: <?php echo get_theme_mod('nm_hero_btn_bg'); ?>;
+         color: <?php echo get_theme_mod('nm_hero_btn_color'); ?> !important;
+      }
+
+      .nm-header-left a:hover {
+         background: <?php echo get_theme_mod('nm_hero_btn_hover'); ?>;
+      }
+   </style>
+<?php }
