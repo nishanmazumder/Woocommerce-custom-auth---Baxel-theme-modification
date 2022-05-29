@@ -17,6 +17,11 @@ $baxel_header_style = get_theme_mod('baxel_header_style', 'topped_lefted_bboxed'
 $baxel_opt_LogoPos = substr($baxel_header_style, 0, 6);
 $baxel_opt_MenuPos = substr($baxel_header_style, 7, 6);
 $baxel_opt_MenuWidth = substr($baxel_header_style, 14, 6);
+$login_txt = get_theme_mod('nm_login_url_txt');
+$login_url = get_theme_mod('nm_login_url');
+$register_txt = get_theme_mod('nm_register_url_txt');
+$register_url = get_theme_mod('nm_register_url');
+$logout_txt = get_theme_mod('nm_logout_txt');
 ?>
 
 <body <?php body_class(); ?>>
@@ -51,11 +56,11 @@ $baxel_opt_MenuWidth = substr($baxel_header_style, 14, 6);
 		<ul class="nm-auth">
 			<?php
 			if (is_user_logged_in()) { ?>
-				<li><a href="<?php echo wp_logout_url(home_url()); ?>">Logout</a></li>
+				<li><a href="<?php echo wp_logout_url(home_url()); ?>"><?php echo $logout_txt ? $logout_txt  : "Logout"; ?></a></li>
 			<?php } else { ?>
 				<!-- <li><a href="<php echo get_permalink(get_option('woocommerce_myaccount_page_id')); ?>">Login</a></li> -->
-				<li><a href="<?php echo get_theme_mod('nm_login_url'); ?>">Login</a></li>
-				<li><a href="<?php echo get_theme_mod('nm_register_url'); ?>">Register</a></li>
+				<li><a href="<?php echo $login_url ? $login_url  : "#"; ?>"><?php echo $login_txt ? $login_txt  : "Login"; ?></a></li>
+				<li><a href="<?php echo $register_url ? $register_url  : "#"; ?>"><?php echo $register_txt ? $register_txt  : "Free Singup"; ?></a></li>
 			<?php }
 			?>
 		</ul>
@@ -73,24 +78,24 @@ $baxel_opt_MenuWidth = substr($baxel_header_style, 14, 6);
 					if ($baxel_opt_MenuPos == 'mright') { ?><div class="site-logo-outer-handler"></div>
 					<?php }
 				} else { ?>
-				<div class="site-logo-left-handler"></div>
+					<div class="site-logo-left-handler"></div>
 				<?php } ?>
 				<?php get_template_part('primary-menu');
-						ob_start('baxel_compress');
-						get_template_part('social-search');
-						ob_end_flush(); 
+				ob_start('baxel_compress');
+				get_template_part('social-search');
+				ob_end_flush();
 				?>
-					<ul class="nm-auth">
-						<?php
-						if (is_user_logged_in()) { ?>
-							<li><a href="<?php echo wp_logout_url(home_url()); ?>">Logout</a></li>
-						<?php } else { ?>
-							<!-- <li><a href="<php echo get_permalink(get_option('woocommerce_myaccount_page_id')); ?>">Login</a></li> -->
-							<li><a href="<?php echo get_theme_mod('nm_login_url'); ?>">Login</a></li>
-							<li><a href="<?php echo get_theme_mod('nm_register_url'); ?>">Register</a></li>
-						<?php }
-						?>
-					</ul>
+				<ul class="nm-auth">
+					<?php
+					if (is_user_logged_in()) { ?>
+						<li><a href="<?php echo wp_logout_url(home_url()); ?>"><?php echo $logout_txt ? $logout_txt  : "Logout"; ?></a></li>
+					<?php } else { ?>
+						<!-- <li><a href="<php echo get_permalink(get_option('woocommerce_myaccount_page_id')); ?>">Login</a></li> -->
+						<li><a href="<?php echo $login_url ? $login_url  : "#"; ?>"><?php echo $login_txt ? $login_txt  : "Login"; ?></a></li>
+						<li><a href="<?php echo $register_url ? $register_url  : "#"; ?>"><?php echo $register_txt ? $register_txt  : "Free Singup"; ?></a></li>
+					<?php }
+					?>
+				</ul>
 			</div>
 			<?php if ($baxel_opt_LogoPos == 'bottom') {
 				get_template_part('logo');
@@ -98,9 +103,9 @@ $baxel_opt_MenuWidth = substr($baxel_header_style, 14, 6);
 		</div>
 	</div>
 
-	<?php 
-	if(is_home()){
-		if(shortcode_exists('header_hero_section')){
+	<?php
+	if (is_home()) {
+		if (shortcode_exists('header_hero_section')) {
 			echo do_shortcode('[header_hero_section]');
 		}
 	}
@@ -116,5 +121,3 @@ $baxel_opt_MenuWidth = substr($baxel_header_style, 14, 6);
 
 			baxel_insert_slider();
 		} -->
-
-

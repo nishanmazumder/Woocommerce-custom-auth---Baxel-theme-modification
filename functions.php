@@ -50,7 +50,7 @@ function nm_woo_sep_reg_form()
    do_action('woocommerce_before_customer_login_form');
 
 ?>
-   <div class="nm-custom-login">
+   <div class="nm-custom-login nm-register-form">
       <form method="post" class="woocommerce-form woocommerce-form-register register" <?php do_action('woocommerce_register_form_tag'); ?>>
 
          <?php do_action('woocommerce_register_form_start'); ?>
@@ -110,8 +110,8 @@ add_action('woocommerce_registration_redirect', 'nm_registration_redirect', 2);
 function nm_registration_redirect()
 {
    // wp_redirect(get_permalink(get_option('woocommerce_myaccount_page_id')));
-   wp_logout();
-   wp_redirect(get_theme_mod('nm_login_url'));
+   //wp_logout();
+   wp_redirect(get_theme_mod('nm_register_redirection'));
    exit();
 }
 
@@ -172,7 +172,7 @@ function nm_theme_custom_panel($wp_customize)
 
    // Add setting - List
    $wp_customize->add_setting('nm_hero_list', array(
-      'default'           => __('Is The 7 Figure Break through System.', 'baxel-child'),
+      'default'           => __('<li>Is The 7 Figure Break through System.</li>', 'baxel-child'),
       //   'sanitize_callback' => 'sanitize_text'
    ));
 
@@ -270,8 +270,28 @@ function nm_theme_custom_panel($wp_customize)
       'priority' => 11
    ));
 
-   // Add setting - Login Url
-   $wp_customize->add_setting('nm_login_url', array(
+    // Add setting - Login Url
+    $wp_customize->add_setting('nm_login_url_txt', array(
+      'default'           => __('Login', 'baxel-child'),
+      //   'sanitize_callback' => 'sanitize_text'
+   ));
+
+   // Add control
+   $wp_customize->add_control(
+      new WP_Customize_Control(
+         $wp_customize,
+         'nm_login_url_txt',
+         array(
+            'label'    => __('Login Text', 'baxel-child'),
+            'section'  => 'nm_woo_section',
+            'settings' => 'nm_login_url_txt',
+            'type'     => 'text'
+         )
+      )
+   );
+
+    // Add setting - Login Url
+    $wp_customize->add_setting('nm_login_url', array(
       'default'           => __('#', 'baxel-child'),
       //   'sanitize_callback' => 'sanitize_text'
    ));
@@ -285,6 +305,26 @@ function nm_theme_custom_panel($wp_customize)
             'label'    => __('Login Url', 'baxel-child'),
             'section'  => 'nm_woo_section',
             'settings' => 'nm_login_url',
+            'type'     => 'text'
+         )
+      )
+   );
+
+    // Add setting - Register Url
+    $wp_customize->add_setting('nm_register_url_txt', array(
+      'default'           => __('FREE Signup', 'baxel-child'),
+      //   'sanitize_callback' => 'sanitize_text'
+   ));
+
+   // Add control
+   $wp_customize->add_control(
+      new WP_Customize_Control(
+         $wp_customize,
+         'nm_register_url_txt',
+         array(
+            'label'    => __('Register Text', 'baxel-child'),
+            'section'  => 'nm_woo_section',
+            'settings' => 'nm_register_url_txt',
             'type'     => 'text'
          )
       )
@@ -306,6 +346,46 @@ function nm_theme_custom_panel($wp_customize)
             'section'  => 'nm_woo_section',
             'settings' => 'nm_register_url',
             'type'     => 'url'
+         )
+      )
+   );
+
+   // Add setting - Register Url
+   $wp_customize->add_setting('nm_register_redirection', array(
+      'default'           => __('#', 'baxel-child'),
+      //   'sanitize_callback' => 'sanitize_text'
+   ));
+
+   // Add control
+   $wp_customize->add_control(
+      new WP_Customize_Control(
+         $wp_customize,
+         'nm_register_redirection',
+         array(
+            'label'    => __('Register Redirection', 'baxel-child'),
+            'section'  => 'nm_woo_section',
+            'settings' => 'nm_register_redirection',
+            'type'     => 'url'
+         )
+      )
+   );
+
+    // Add setting - Logout
+    $wp_customize->add_setting('nm_logout_txt', array(
+      'default'           => __('Logout', 'baxel-child'),
+      //   'sanitize_callback' => 'sanitize_text'
+   ));
+
+   // Add control
+   $wp_customize->add_control(
+      new WP_Customize_Control(
+         $wp_customize,
+         'nm_logout_txt',
+         array(
+            'label'    => __('Logout Text', 'baxel-child'),
+            'section'  => 'nm_woo_section',
+            'settings' => 'nm_logout_txt',
+            'type'     => 'text'
          )
       )
    );
@@ -454,7 +534,7 @@ function nm_theme_custom_panel($wp_customize)
    );
 
    //WOO
-   $wp_customize->add_setting('nm_auth_btn_bg', array(
+   $wp_customize->add_setting('nm_login_btn_bg', array(
       'default' => '#4fc6a6',
    ));
 
@@ -463,17 +543,17 @@ function nm_theme_custom_panel($wp_customize)
    $wp_customize->add_control(
       new WP_Customize_Color_Control(
          $wp_customize,
-         'nm_auth_btn_bg',
+         'nm_login_btn_bg',
          array(
-            'label' => 'Auth Button Background Color',
+            'label' => 'Login Button Background',
             'section' => 'nm_mod_color',
-            'settings' => 'nm_auth_btn_bg'
+            'settings' => 'nm_login_btn_bg'
 
          )
       )
    );
 
-   $wp_customize->add_setting('nm_auth_btn_color', array(
+   $wp_customize->add_setting('nm_login_btn_color', array(
       'default' => '#fff',
    ));
 
@@ -482,17 +562,17 @@ function nm_theme_custom_panel($wp_customize)
    $wp_customize->add_control(
       new WP_Customize_Color_Control(
          $wp_customize,
-         'nm_auth_btn_color',
+         'nm_login_btn_color',
          array(
-            'label' => 'Auth Button Text Color',
+            'label' => 'Login Button Text',
             'section' => 'nm_mod_color',
-            'settings' => 'nm_auth_btn_color'
+            'settings' => 'nm_login_btn_color'
 
          )
       )
    );
 
-   $wp_customize->add_setting('nm_auth_btn_hover', array(
+   $wp_customize->add_setting('nm_login_btn_hover', array(
       'default' => '#7bddc3',
    ));
 
@@ -501,11 +581,68 @@ function nm_theme_custom_panel($wp_customize)
    $wp_customize->add_control(
       new WP_Customize_Color_Control(
          $wp_customize,
-         'nm_auth_btn_hover',
+         'nm_login_btn_hover',
          array(
-            'label' => 'Auth Button Hover Color',
+            'label' => 'Login Button Hover',
             'section' => 'nm_mod_color',
-            'settings' => 'nm_auth_btn_hover'
+            'settings' => 'nm_login_btn_hover'
+
+         )
+      )
+   );
+
+   $wp_customize->add_setting('nm_reg_btn_bg', array(
+      'default' => '#4fc6a6',
+   ));
+
+
+   // Add Controls
+   $wp_customize->add_control(
+      new WP_Customize_Color_Control(
+         $wp_customize,
+         'nm_reg_btn_bg',
+         array(
+            'label' => 'Register Button Background',
+            'section' => 'nm_mod_color',
+            'settings' => 'nm_reg_btn_bg'
+
+         )
+      )
+   );
+
+   $wp_customize->add_setting('nm_reg_btn_color', array(
+      'default' => '#fff',
+   ));
+
+
+   // Add Controls
+   $wp_customize->add_control(
+      new WP_Customize_Color_Control(
+         $wp_customize,
+         'nm_reg_btn_color',
+         array(
+            'label' => 'Register Button Text',
+            'section' => 'nm_mod_color',
+            'settings' => 'nm_reg_btn_color'
+
+         )
+      )
+   );
+
+   $wp_customize->add_setting('nm_reg_btn_hover', array(
+      'default' => '#7bddc3',
+   ));
+
+
+   // Add Controls
+   $wp_customize->add_control(
+      new WP_Customize_Color_Control(
+         $wp_customize,
+         'nm_reg_btn_hover',
+         array(
+            'label' => 'Register Button Hover',
+            'section' => 'nm_mod_color',
+            'settings' => 'nm_reg_btn_hover'
 
          )
       )
@@ -523,16 +660,24 @@ add_action('customize_register', 'nm_theme_custom_panel');
 add_shortcode('header_hero_section', 'nm_header_hero_section');
 
 function nm_header_hero_section()
-{ ?>
+{ 
+   $header_txt = get_theme_mod('nm_hero_main_txt');
+   $header_list = get_theme_mod('nm_hero_list');
+   $header_btn_txt = get_theme_mod('nm_hero_btn_txt');
+   $header_url = get_theme_mod('nm_register_url');
+   $header_final_txt = get_theme_mod('nm_hero_final_txt');
+
+   
+   ?>
    <div class="baxel-slider-container" style="box-shadow: none;">
       <div class="nm-header">
          <div class="nm-header-left">
-            <h1><?php echo get_theme_mod('nm_hero_main_txt');  ?></h1>
+            <h1><?php echo $header_txt ? $header_txt : 'Demo text';  ?></h1>
             <ul>
-               <?php echo get_theme_mod('nm_hero_list');  ?>
+               <?php echo $header_list ? $header_list : '<li>Demo text</li>';  ?>
             </ul>
-            <a href="<?php echo get_theme_mod('nm_register_url'); ?>"><?php echo get_theme_mod('nm_hero_btn_txt'); ?></a>
-            <p><?php echo get_theme_mod('nm_hero_final_txt'); ?></p>
+            <a href="<?php echo $header_url ? $header_url : '#'; ?>"><?php echo $header_btn_txt ? $header_btn_txt : 'Demo text'; ?></a>
+            <p><?php echo $header_final_txt ? $header_final_txt : 'Demo text'; ?></p>
          </div>
          <div class="nm-header-right">
             <?php
@@ -560,13 +705,22 @@ function nm_customizer_style()
          }
       <?php } ?>
       
-      .nm-auth li a {
-         background-color: <?php echo get_theme_mod('nm_auth_btn_bg'); ?> !important;
-         color: <?php echo get_theme_mod('nm_auth_btn_color'); ?> !important;
+      .nm-auth li:first-child a {
+         background-color: <?php echo get_theme_mod('nm_login_btn_bg'); ?> !important;
+         color: <?php echo get_theme_mod('nm_login_btn_color'); ?> !important;
       }
 
-      .nm-auth li a:hover {
-         background-color: <?php echo get_theme_mod('nm_auth_btn_hover'); ?> !important;
+      .nm-auth li:first-child a:hover {
+         background-color: <?php echo get_theme_mod('nm_login_btn_hover'); ?> !important;
+      }
+
+      .nm-auth li:last-child a {
+         background-color: <?php echo get_theme_mod('nm_reg_btn_bg'); ?> !important;
+         color: <?php echo get_theme_mod('nm_reg_btn_color'); ?> !important;
+      }
+
+      .nm-auth li:last-child a:hover {
+         background-color: <?php echo get_theme_mod('nm_reg_btn_hover'); ?> !important;
       }
 
       .baxel-slider-container, .nm-header {
